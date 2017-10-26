@@ -55,6 +55,9 @@ public class AllureConfig {
     @Property("allure.max.title.length")
     protected int maxTitleLength = DEFAULT_MAX_TITLE_LENGTH;
 
+    @Property("allure.result.text.transformation")
+    protected String textTransformation = "no";
+
     /**
      * Pattern containing issue tracker base URL and one %s placeholder which will be replaced by issue name.
      * Example: http://example.com/%s and @Issue("SOME-123") will give you http://example.com/SOME-123
@@ -67,6 +70,7 @@ public class AllureConfig {
      * Currently there is no special annotation to define TMS test id in your tests. Work in progress...
      * Example: http://example.com/%s and <label name="testId" value="SOME-123"/> will give you http://example.com/SOME-123
      */
+    
     @Property("allure.tests.management.pattern")
     protected String tmsPattern = "%s";
 
@@ -138,6 +142,10 @@ public class AllureConfig {
 
     public String getVersion() {
         return version;
+    }
+
+    public boolean getTextTransformationEnabled() {
+        return "yes".equals(textTransformation);
     }
 
     /**

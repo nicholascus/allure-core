@@ -40,10 +40,12 @@ public final class TextUtils {
             params = ' ' + matcher.group(2); // NOSONAR
         }
 
-        result = simplify(result);
-        result = splitCamelCaseWordsWithLowdashes(result);
-        result = lowdashesToSpaces(result);
-        result = underscoreCapFirstWords(result);
+        if (AllureConfig.newInstance().getTextTransformationEnabled()) {
+            result = simplify(result);
+            result = splitCamelCaseWordsWithLowdashes(result);
+            result = lowdashesToSpaces(result);
+            result = underscoreCapFirstWords(result);
+        }
         result = capitalize(result);
 
         return result + params;
